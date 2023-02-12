@@ -23,4 +23,4 @@ const App = ({ history }) => {
   )
 }
 
-export default App
+export default App;

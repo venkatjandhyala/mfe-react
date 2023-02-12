@@ -21,7 +21,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath, onSignIn }) => {
       const { pathname } = history.location;
 
       if(pathname !== nextPathname) {
-        history.push(pathname)
+        history.push(nextPathname)
       }
     }
   }

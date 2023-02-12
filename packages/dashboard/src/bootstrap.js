@@ -4,31 +4,18 @@ import { createBrowserHistory, createMemoryHistory } from 'history';
 
 import App from './App';
 
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { defaultHistory }) => {
   const history = defaultHistory || createMemoryHistory({
-    initialEntries: [initialPath]
+    initialEntries: ['/dashboard']
   });
-
-  if(onNavigate)
-    history.listen(onNavigate)
 
   ReactDOM.render(
     <App history={history}/>,
     el
   )
-  
-  return {
-    onParentNavigate({pathname: nextPathname}) {
-      const {pathname} = history.location;
-
-      if(pathname !== nextPathname) {
-        history.push(nextPathname)
-      }
-    }
-  }
 };
 
-if(process.env.NODE_END === 'development') {
+if(process.env.NODE_ENV === 'development') {
   const el = document.querySelector('#__stdaln-dashboard')
 
   if(el) {
@@ -38,4 +25,4 @@ if(process.env.NODE_END === 'development') {
   }
 }
 
-export {mount}
+export { mount };
